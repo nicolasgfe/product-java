@@ -6,6 +6,8 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
+import java.math.BigDecimal;
+
 public class UpdateProductForm {
     @Length(max = 50)
     @NotNull
@@ -18,11 +20,9 @@ public class UpdateProductForm {
     private String descricao;
 
     @NotNull
-    @NotEmpty
-    private float valor;
+    private BigDecimal valor;
 
     @NotNull
-    @NotEmpty
     private int quantidade;
 
 
@@ -42,19 +42,19 @@ public class UpdateProductForm {
         this.descricao = descricao;
     }
 
-    public float getValor() {
+    public BigDecimal getValor() {
         return valor;
     }
 
-    public void setValor(float valor) {
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
 
-    public int getQuantidade() {
+    public Integer getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
     }
 

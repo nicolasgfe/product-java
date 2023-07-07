@@ -3,6 +3,7 @@ package com.nicolas.avaliacao.model;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Entity
 public class Product implements Serializable {
@@ -16,11 +17,11 @@ public class Product implements Serializable {
     @Column(nullable = false)
     private String descricao;
     @Column(nullable = false)
-    private float valor;
+    private BigDecimal valor;
     @Column(nullable = false)
-    private int quantidade;
+    private Integer quantidade;
 
-    public Product(String nome, String descricao, float valor, int quantidade) {
+    public Product(String nome, String descricao, BigDecimal valor, Integer quantidade) {
         super();
         this.nome = nome;
         this.descricao = descricao;
@@ -30,6 +31,7 @@ public class Product implements Serializable {
 
     public Product() {
     }
+
 
     public long getId() {
         return id;
@@ -55,15 +57,15 @@ public class Product implements Serializable {
         this.descricao = descricao;
     }
 
-    public float getValor() {
+    public BigDecimal getValor() {
         return valor;
     }
 
-    public void setValor(float valor) {
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
 
-    public int getQuantidade() {
+    public Integer getQuantidade() {
         return quantidade;
     }
 

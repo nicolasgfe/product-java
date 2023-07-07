@@ -1,9 +1,12 @@
 package com.nicolas.avaliacao.form;
 
 import com.nicolas.avaliacao.model.Product;
+import com.nicolas.avaliacao.repository.ProductRepository;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
+
+import java.math.BigDecimal;
 
 public class ProductForm {
     @Length(max = 50)
@@ -15,11 +18,9 @@ public class ProductForm {
     @NotEmpty
     private String descricao;
     @NotNull
-    @NotEmpty
-    private float valor;
+    private BigDecimal valor;
     @NotNull
-    @NotEmpty
-    private int quantidade;
+    private Integer quantidade;
 
 
     public String getNome() {
@@ -38,20 +39,28 @@ public class ProductForm {
         this.descricao = descricao;
     }
 
-    public float getValor() {
+    public BigDecimal getValor() {
         return valor;
     }
 
-    public void setValor(float valor) {
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
 
-    public int getQuantidade() {
+    public Integer getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
+    }
+    public Product converter(Long id, ProductRepository productRepository) {
+        Product product = productRepository.findById(id).get();
+        product.setNome(nome);
+        product.setDescricao(descricao);
+        product.setValor(valor);
+        product.setQuantidade(quantidade);
+        return product;
     }
 
     public Product converter() {
